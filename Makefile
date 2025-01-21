@@ -1,6 +1,8 @@
 all : up
 
 up : 
+	mkdir -p /home/ccadoret/data/mariadb
+	mkdir -p /home/ccadoret/data/wordpress	
 	@docker-compose -f ./srcs/docker-compose.yml up -d
 
 down : 

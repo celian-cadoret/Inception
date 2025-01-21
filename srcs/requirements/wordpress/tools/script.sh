@@ -31,7 +31,7 @@ wp theme install astra --activate --allow-root
 
 wp plugin install redis-cache --activate --allow-root
 
-sed -i 's/listen = \/run\/php\/php7.3-fpm.sock/listen = 9000/g' /etc/php/7.3/fpm/pool.d/www.conf
+sed -i 's/listen = \/run\/php\/php7.4-fpm.sock/listen = 9000/g' /etc/php/7.4/fpm/pool.d/www.conf
 
 mkdir /run/php
 
@@ -39,4 +39,4 @@ mkdir /run/php
 wp redis enable --allow-root
 
 
-/usr/sbin/php-fpm7.3 -F
+/usr/sbin/php-fpm7.4 -F
