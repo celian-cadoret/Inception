@@ -1,6 +1,6 @@
 FROM docker:oldstable
 
-RUN apt -y update && apt install -y nginx && apt install openssl -y
+RUN apt-get -y update && apt-get install -y nginx && apt-get install openssl -y
 
 COPY ./tools/script.sh /
 
