@@ -1,6 +1,11 @@
 #!/bin/bash
 
-service mysql start
+mkdir -p /run/mysqld
+chown -R mysql:mysql /run/mysqld
+
+mysqld_safe --datadir=/var/lib/mysql &
+
+sleep 5
 
 echo "CREATE DATABASE IF NOT EXISTS $db_name ;" > db1.sql
 echo "CREATE USER IF NOT EXISTS '$db_user'@'%' IDENTIFIED BY '$db_pwd' ;" >> db1.sql
@@ -10,6 +15,4 @@ echo "FLUSH PRIVILEGES;" >> db1.sql
 
 mysql < db1.sql
 
-kill $(cat /var/run/mysqld/mysqld.pid)
-
-mysqld
+wait
