@@ -1,12 +1,15 @@
+#!/bin/bash
+
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out $TLS_CERT -subj "/C=MO/L=KH/O=1337/OU=student/CN=sahafid.42.ma"
 
 echo "
 server {
 	listen 443 ssl;
 	listen [::]:443 ssl;
 
-	server_name $DOMAIN_NAME $DOMAIN_NAME;
+	server_name $DOMAIN_NAME www.$DOMAIN_NAME;
 
-	ssl_certificate $CERTS_;
+	ssl_certificate $TLS_CERT;
 	ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;" > /etc/nginx/sites-available/default
 
 echo '
@@ -23,4 +26,4 @@ echo '
     }
 }' >> /etc/nginx/sites-available/default
 
-nginx -g daemon off;
+nginx -g "daemon off;"
