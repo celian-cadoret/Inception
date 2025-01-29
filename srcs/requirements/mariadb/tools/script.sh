@@ -15,6 +15,6 @@ echo "GRANT ALL PRIVILEGES ON $db_name.* TO '$db_user'@'%' ;" >> db1.sql
 echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '12345' ;" >> db1.sql
 echo "FLUSH PRIVILEGES;" >> db1.sql
 
-mysqld < db1.sql
+mysql -u root -p12345 < db1.sql
 
 wait
